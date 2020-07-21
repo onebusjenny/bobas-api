@@ -8,3 +8,5 @@ class BobasAdapter {
         )
     }
 }
+
+// communicate with api
