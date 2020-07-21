@@ -6,13 +6,11 @@ class Api::V1::BobasController < ApplicationController
     
     def show
         @boba = Boba.find(params[:id])
-    
         render json: @boba, status:200
     end
      
     def create 
         @boba = Boba.create(boba_params)
-    
         render json: @boba, status:200
     end
     
@@ -34,9 +32,5 @@ class Api::V1::BobasController < ApplicationController
     
     # end
     
-
-
-
-
 
 end
