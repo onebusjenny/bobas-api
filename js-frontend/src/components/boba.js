@@ -1,4 +1,4 @@
-class Bobas {
+class Boba {
     constructor(bobaJSON){
         this.id = bobaJSON.id
         this.name = bobaJSON.name
@@ -12,3 +12,4 @@ class Bobas {
 }
 
 // create new boba instance as i ittirate over boba array
+// not accessiable for bobas class
