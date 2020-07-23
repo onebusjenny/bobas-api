@@ -4,4 +4,4 @@ class App {
     }
 }
 
-// app creates a new boba components
+// app creates a new boba components, whenever invoke app with a new keyword, fires up the constructor, consrtuctor assign the property bobas

@@ -5,5 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Boba.create(name: "greenbobo", user_id: 1, flavor: "green")
-Boba.create(name: "green", user_id: 2, flavor: "green")
+Boba.create(name: "greenbobo", flavor: "green")
+Boba.create(name: "green", flavor: "green")
