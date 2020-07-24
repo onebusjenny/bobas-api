@@ -10,15 +10,17 @@ class Bobas {
         this.bobasContainer = document.getElementById('bobas-container')
         this.bobaName = document.getElementById('boba-name')
         this.bobaFlavor = document.getElementById('boba-flavor')
+        //grab ingredient ids
         this.bobaForm = document.getElementById('new-boba-form')
         this.bobaForm.addEventListener('submit',this.createBoba.bind(this))
-        // question:where did bobaForm got defined?
+        // question:where did bobaForm got defined? send back the check ids
       }
 
     createBoba(e){
         e.preventDefault()
         const name = this.bobaName.value
         const flavor = this.bobaFlavor.value
+        const ingredient_ids = //array of ids(only the one that's checked)
         this.adapter.createBoba(name,flavor).then(boba => {
             console.log(boba)
         })
@@ -52,7 +54,7 @@ class Boba {
     }
 
     renderLi(){
-        return `<li>Boba Name: ${this.name}<br>Tea Flavor: ${this.flavor}<br>Ingredients:</li>`
+        return `<li>Boba Name: ${this.name}<br>Tea Flavor: ${this.flavor}<br>Ingredients: </li>`
     }
     
 }

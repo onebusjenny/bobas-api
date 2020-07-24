@@ -8,10 +8,15 @@ class BobasAdapter {
         )
     }
 
-    createBoba(name,flavor){
+    getIngredients(){
+        return fetch(this.baseUrl)
+    }
+
+    createBoba(name,flavor,ingredient_ids){
         const boba = {
             name: name,
-            flavor: flavor
+            flavor: flavor,
+            ingredient_ids: ingredient_ids
         }
         return fetch(this.baseUrl, {
             method: 'POST',
