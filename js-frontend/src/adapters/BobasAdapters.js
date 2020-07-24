@@ -8,19 +8,45 @@ class BobasAdapter {
         )
     }
 
-    createBobas(boba){
-        return fetch(this.baseUrl,{
-            method:POST, 
-            headers:{"content-type":"application/json"},
-            body: JSON.stringify({boba:
-                {
-                name: boba.name,
-                flavor: boba.flavor,
-                ingredient: [1,2,3,4,5,6]
-            }})
+    createBoba(value){
+        const boba = {
+            body: value
+        }
+        return fetch(this.baseUrl, {
+            method: 'POST',
+            headers: {
+                'content-type':'application/json',
+            },
+            body: JSON.stringify({boba})
         })
-
+        .then(res => res.json())
     }
+
+
+
+//     {
+            //     // name: boba.name,
+            //     // flavor: boba.flavor
+            // }
+
+
+
+
+    // createBobas(value){
+    //     return fetch(this.baseUrl,{
+    //         method:'POST', 
+    //         headers:{"content-type":"application/json"},
+    //         body: JSON.stringify({boba:
+    //             {
+    //             name: boba.name,
+    //             flavor: boba.flavor,
+    //             ingredient: [1,2,3,4,5,6]
+    //         }})
+    //     })
+
+    // }
 }
 
 // communicate with api
+
+   

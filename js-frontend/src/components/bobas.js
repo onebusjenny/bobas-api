@@ -8,13 +8,19 @@ class Bobas {
 
     initiBindingsAndEventlistners(){
         this.bobasContainer = document.getElementById('bobas-container')
+        this.newBobaBody = document.getElementById('new-boba-body')
         this.bobaForm = document.getElementById('new-boba-form')
-        this.bobaForm.addEventListener('submit',this.createBoba)
+        this.bobaForm.addEventListener('submit',this.createBoba.bind(this))
+        // question:where did bobaForm got defined?
     }
 
     createBoba(e){
         e.preventDefault()
-        console.log('boba created')
+        const value = this.newBobaBody.value
+        this.adapter.createBoba(value).then(boba => {
+            console.log(boba)
+        })
+        
     }
 
     fetchAndLoadBobas(){
