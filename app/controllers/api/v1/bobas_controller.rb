@@ -10,12 +10,13 @@ class Api::V1::BobasController < ApplicationController
     end
     
     def create 
+     
         @boba = Boba.create(boba_params)
-        render json: @boba, status:200
         @boba = Boba.new(
         :name => params[:boba][:name], 
         :flavor => params[:boba][:flavor])
-        @boba.ingredient_ids = params[:boba][:ingredient_ids]
+        render json: @boba, status:200
+        # @boba.ingredient_ids = params[:boba][:ingredient_ids]
     end
     
     def update
@@ -27,6 +28,10 @@ class Api::V1::BobasController < ApplicationController
         end
     end
     
+    private
+        def boba_params
+            params.require(:boba).permit(:id, :name, :flavor)
+        end
     # def destroy
     #     @boba = Boba.find(params[:id])
     #     @boba.delete
