@@ -2,8 +2,19 @@ class Bobas {
     constructor(){
         this.bobas = []
         this.adapter = new BobasAdapter()
-        // this.bindEventlistners()
+        this.initiBindingsAndEventlistners()
         this.fetchAndLoadBobas()
+    }
+
+    initiBindingsAndEventlistners(){
+        this.bobasContainer = document.getElementById('bobas-container')
+        this.bobaForm = document.getElementById('new-boba-form')
+        this.bobaForm.addEventListener('submit',this.createBoba)
+    }
+
+    createBoba(e){
+        e.preventDefault()
+        console.log('boba created')
     }
 
     fetchAndLoadBobas(){
@@ -20,9 +31,8 @@ class Bobas {
             this.render()
         })
     }
-    render(){
-            const bobasContainer = document.getElementById('bobas-container')
-            bobasContainer.innerHTML = this.bobas.map(boba => `<li>${boba.name}<br>${boba.flavor}</li>`).join('')
+    render(){     
+            this.bobasContainer.innerHTML = this.bobas.map(boba => boba.renderLi()).join('')
         }
 }
 
@@ -31,6 +41,10 @@ class Boba {
         this.id = bobaJSON.id
         this.name = bobaJSON.name
         this.flavor = bobaJSON.flavor
+    }
+
+    renderLi(){
+        return `<li>Boba Name: ${this.name}<br>Tea Flavor: ${this.flavor}<br>Ingredients:</li>`
     }
     
 }

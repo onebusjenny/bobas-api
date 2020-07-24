@@ -1,0 +1,14 @@
+First screen: 
+Bubble Tea Generator
+Show list of everyone's boba (fetch )
+button 1: create new boba 
+
+Second screen(after clicking button 1):
+Bubble tea form with (form)
+Name 
+Flavor 
+Ingredients list (6 ingredients and a input box for user to type in what they want)
+Submit button
+
+Back to first screen:
+After submitting the create new boba form, goes back to first screen and you will see your boba
