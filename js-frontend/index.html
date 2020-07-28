@@ -21,16 +21,24 @@
                     <br><br>
                     Tea Flavor: <br><br> <input type="text" name="boba-flavor" id="boba-flavor"> 
                     <br><br>    
-                    Ingredients: <input type="checkbox">
+                    Ingredients: <br><br>
+                    <div id="ingredient-section">
+                    <button id="ing-button">click to see ingredients</button>
+                    
+                   
+
+                    </div>
+                    
                     <br><br>
+                    
                     <input type="submit" value="Save boba"/>
                    
                  </form>
+                 
                 </div>
             </div>
         <ul id="bobas-container">       
         </ul>
-        
         
         
         <div id="bobas-container">
@@ -38,10 +46,10 @@
         </div>
     </div>
     <br><br>
-   
-    <script src="src/components/bobas.js"></script>
+    
+    <script src="src/components/main.js"></script>
+    <script src="src/adapters/main_adapters.js"></script>
     <script src="src/components/app.js"></script>
-    <script src="src/adapters/BobasAdapters.js"></script>
     <script src="src/index.js"></script>
 
   </body>

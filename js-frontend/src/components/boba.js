@@ -1,4 +1,4 @@
-class Boba {
+class X {
     constructor(bobaJSON){
         this.id = bobaJSON.id
         this.name = bobaJSON.name
