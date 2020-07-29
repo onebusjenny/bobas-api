@@ -34,6 +34,8 @@ class BobasAdapter {
     return fetch('http://localhost:3000/api/v1/ingredients')
     .then(res => res.json()
     .then(ingArray => {ingArray.forEach(ingredient)
+        debugger
+
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox"
         checkbox.name = "boba[ingredient-ids][]"
