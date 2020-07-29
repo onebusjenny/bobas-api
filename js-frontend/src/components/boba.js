@@ -1,4 +1,4 @@
-class X {
+class Boba {
     constructor(bobaJSON){
         this.id = bobaJSON.id
         this.name = bobaJSON.name
@@ -10,6 +10,3 @@ class X {
         bobasContainer.innerHTML = this.bobas.map(boba => `<li>${boba.name}</li>`).join('')
     }
 }
-
-// create new boba instance as i ittirate over boba array
-// not accessiable for bobas class

@@ -11,14 +11,11 @@ class Boba {
     renderBoba(){
         return `<li>Boba Name: ${this.name}<br>Tea Flavor: ${this.flavor} </li>`
     }
-
     
     static createBoba(e){
         e.preventDefault()
-        const bobasContainer = document.getElementById('bobas-container')
         const bobaName = document.getElementById('boba-name')
         const bobaFlavor = document.getElementById('boba-flavor')
-        
         const bobaIngredient = document.getElementById('ingredient-id')
                 //grab ingredient ids
         const name = bobaName.value
@@ -40,9 +37,9 @@ class Bobas {
     }
 
     initiBindingsAndEventlistners(){
-       
+        this.bobasContainer = document.getElementById('bobas-container')
         this.bobaForm = document.getElementById('new-boba-form')
-        this.bobaForm.addEventListener('submit',this.createBoba.bind(this))
+        this.bobaForm.addEventListener('submit',Boba.createBoba.bind(this))
         // send back the check ids
       }
 
