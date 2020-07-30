@@ -36,23 +36,20 @@ class Bobas {
         const flavor = this.bobaFlavor.value
         //"green"
         
-        const ingredient_ids = Array.from(e.target).filter(ing => {
-            if (ing.type === 'checkbox'&& ing.checked){
-                console.log(ing)
-                return ing.checked.value
-            }
-        })
-        console.log(ingredient_ids)
+        const ingredient_ids = Array.from(e.target).filter(
+            ing => ing.type === 'checkbox' && ing.checked).map(
+            input => input.value)
+        
+        // console.log(ingredient_ids)
         //grab checked checkboxes. //value from the array
         // [1,2,3,4]
         //array of ids(only the one that's checked)
-        this.adapter.createBoba(name,flavor).then(boba => {
+        this.adapter.createBoba(name,flavor,ingredient_ids).then(boba => {
             console.log(boba)
         })
-    }
+        }
 
-    fetchAndLoadBobas(){
-        
+    fetchAndLoadBobas(){  
         this.adapter
         .getBobas()
         .then(bobas => {
@@ -66,13 +63,12 @@ class Bobas {
         })
     }
 
-    fetchAndLoadIngredients(){
-        
+    fetchAndLoadIngredients(){  
         this.ingAdapter
         .getIngredients()
         .then(ingredients => {
-            ingredients.forEach(ingredient => {
-                const newIngredient = new Ingredient(ingredient)
+            ingredients.forEach(ingredient_id => {
+                const newIngredient = new Ingredient(ingredient_id)
                 this.ingredients.push(newIngredient)
                 // iterate and then push indivisual object into []
                 // console.log(this.bobas)
