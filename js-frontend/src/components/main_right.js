@@ -70,8 +70,6 @@ class Bobas {
             ingredients.forEach(ingredient_id => {
                 const newIngredient = new Ingredient(ingredient_id)
                 this.ingredients.push(newIngredient)
-                // iterate and then push indivisual object into []
-                // console.log(this.bobas)
             })
             this.renderIngredients()
         })
@@ -92,10 +90,11 @@ class Boba {
         this.id = bobaJSON.id
         this.name = bobaJSON.name
         this.flavor = bobaJSON.flavor
+        this.ingredients = bobaJSON.ingredients
     }
 
     renderLi(){
-        return `<li>Boba Name: ${this.name}<br>Tea Flavor: ${this.flavor}<br>Ingredients: </li>`
+        return `<li>Boba Name: ${this.name}<br>Tea Flavor: ${this.flavor}<br>Ingredients: ${this.ingredients.map(ingredients => ingredients.name).join(', ')}</li>`
     }
 }
 
