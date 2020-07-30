@@ -15,11 +15,12 @@ class Bobas {
         this.ingredientContainer = document.getElementById('ingredient-container')
         this.bobaName = document.getElementById('boba-name')
         this.bobaFlavor = document.getElementById('boba-flavor')
+
         //grab ingredient ids
         //grab the checked boxes > create array/ grab only the checked one => array send that
         this.bobaForm = document.getElementById('new-boba-form')
         this.bobaForm.addEventListener('submit',this.createBoba.bind(this))
-        // question:where did bobaForm got defined? send back the check ids
+        
         // this.ingButton = document.getElementById('ing-button')
         // this.ingButton.addEventListener('click', function(){
         //     IngredientAdapter.getIngredients();
@@ -34,7 +35,15 @@ class Bobas {
         const name = this.bobaName.value
         const flavor = this.bobaFlavor.value
         //"green"
-        const ingredient_ids = //grab checked checkboxes. //value from the array
+        
+        const ingredient_ids = Array.from(e.target).filter(ing => {
+            if (ing.type === 'checkbox'&& ing.checked){
+                console.log(ing)
+                return ing.checked.value
+            }
+        })
+        console.log(ingredient_ids)
+        //grab checked checkboxes. //value from the array
         // [1,2,3,4]
         //array of ids(only the one that's checked)
         this.adapter.createBoba(name,flavor).then(boba => {
@@ -101,6 +110,7 @@ class Ingredient {
     }
 
     renderCheckbox(){
-        return `<input type="checkbox" ${this.name}>` 
+        return `<input type="checkbox" name=${this.name} value= ${this.id} >
+                <label>${this.name}</label>` 
     }
 }
