@@ -45,8 +45,14 @@ class Bobas {
         // [1,2,3,4]
         //array of ids(only the one that's checked)
         this.adapter.createBoba(name,flavor,ingredient_ids).then(boba => {
-            console.log(boba)
+            const newBoba = new Boba(boba)
+            this.bobas.push(newBoba)
+            this.bobasContainer.appendChild(newBoba.renderLi())
         })
+        this.bobaName.value = ''
+        this.bobaFlavor.value = ''
+        Array.from(e.target).map(
+            ing => ing.type === 'checkbox' && ing.checked === false)
         }
 
     fetchAndLoadBobas(){  
@@ -75,8 +81,11 @@ class Bobas {
         })
     }
     render(){     
-            this.bobasContainer.innerHTML = this.bobas.map(boba => boba.renderLi()).join('')
-
+            // this.bobasContainer.innerHTML = this.bobas.map(boba => this.bobasContainer.innerHTML.boba.renderLi()).join('')
+            this.bobas.map(boba => {
+                console.log(boba.renderLi())
+            this.bobasContainer.appendChild(boba.renderLi()) 
+           })
         }
 
     renderIngredients(){
@@ -94,8 +103,29 @@ class Boba {
     }
 
     renderLi(){
-        return `<li>Boba Name: ${this.name}<br>Tea Flavor: ${this.flavor}<br>Ingredients: ${this.ingredients.map(ingredients => ingredients.name).join(', ')}</li>`
+        const li = document.createElement('li')
+        li.id = this.id
+        li.innerHTML= `Boba Name: ${this.name}<br>Tea Flavor: ${this.flavor}
+        <br>Ingredients: ${this.ingredients.map(ingredients => ingredients.name).join(', ')}`
+        const deleteBobaButton = document.createElement('button')
+        deleteBobaButton.innerText = 'delete boba'
+        deleteBobaButton.id =this.id
+        deleteBobaButton.addEventListener('click',this.deleteBoba)
+        li.appendChild(deleteBobaButton)
+        return li
     }
+
+    deleteBoba(ev) {
+        console.log(ev)
+         return fetch('http://localhost:3000/api/v1/bobas' + '/' + ev.target.id, {
+           method: 'DELETE'
+         })
+         .then(response => response.json())
+         .then(response => {
+           const l = document.querySelector(`${response.id}`)
+         console.log(l)})
+       }
+
 }
 
 class Ingredient {
@@ -109,3 +139,6 @@ class Ingredient {
                 <label>${this.name}</label>` 
     }
 }
+
+
+

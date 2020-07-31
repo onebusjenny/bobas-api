@@ -8,7 +8,6 @@ class BobasAdapter {
         )
     }
 
-
     createBoba(name,flavor,ingredient_ids){
         const boba = {
             name: name,
@@ -23,11 +22,14 @@ class BobasAdapter {
             body: JSON.stringify({boba})
         })
         .then(res => res.json())
+        
+        }
+
+
+
     }
-}
-
+    
 // communicate with api
-
   class IngredientAdapter{
         constructor(){
             this.baseUrl = 'http://localhost:3000/api/v1/ingredients'
@@ -37,6 +39,12 @@ class BobasAdapter {
         return fetch(this.baseUrl).then(res => res.json()
         )
     }
+
+
+
+
+
+
 
 
 //   static getIngredients(){
