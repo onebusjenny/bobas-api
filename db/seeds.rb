@@ -5,5 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Boba.create(name: "greenbobo", flavor: "green")
-Boba.create(name: "green", flavor: "green")
+b1= Boba.create(name: "greenbobo", flavor: "green")
+b2= Boba.create(name: "green", flavor: "green")
+
+b1.ingredients << Ingredient.create(name: "Tapioca")
+b1.ingredients << Ingredient.create(name: "Coconut Jelly")
+b1.ingredients << Ingredient.create(name: "Red Bean")
+b2.ingredients << Ingredient.create(name: "Pop Jelly")
+b2.ingredients << Ingredient.create(name: "Brown Sugar Tapioca")
+b2.ingredients << Ingredient.create(name: "Aloe")

@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_200057) do
+ActiveRecord::Schema.define(version: 2020_07_24_043842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boba_ingredients", force: :cascade do |t|
+    t.integer "boba_id"
+    t.integer "ingredient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "bobas", force: :cascade do |t|
     t.string "name"
@@ -23,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_200057) do
   end
 
   create_table "ingredients", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
