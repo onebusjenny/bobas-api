@@ -121,8 +121,10 @@ class Boba {
          })
          .then(response => response.json())
          .then(response => {
-           const l = document.querySelector(`li#${CSS.escape(response.id)}`);
-         console.log(l)})
+            const test = document.getElementById(`${response.id}`)
+            console.log("test", test)
+            test.remove()
+       })
        }
 
 }
