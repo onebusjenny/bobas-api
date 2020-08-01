@@ -121,7 +121,7 @@ class Boba {
          })
          .then(response => response.json())
          .then(response => {
-           const l = document.querySelector(`[li=${CSS.escape(response.id)}]`);
+           const l = document.querySelector(`li#${CSS.escape(response.id)}`);
          console.log(l)})
        }
 
