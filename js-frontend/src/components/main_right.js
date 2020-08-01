@@ -116,13 +116,13 @@ class Boba {
     }
 
     deleteBoba(ev) {
-        console.log(ev)
          return fetch('http://localhost:3000/api/v1/bobas' + '/' + ev.target.id, {
            method: 'DELETE'
          })
          .then(response => response.json())
          .then(response => {
-           const l = document.querySelector(`${response.id}`)
+           const l = document.querySelector(`${l.innerHTML}`,`${response.id}`)
+           $('#li').modal('hide')
          console.log(l)})
        }
 
