@@ -15,35 +15,29 @@ class Bobas {
         this.ingredientContainer = document.getElementById('ingredient-container')
         this.bobaName = document.getElementById('boba-name')
         this.bobaFlavor = document.getElementById('boba-flavor')
-
-        //grab ingredient ids
         //grab the checked boxes > create array/ grab only the checked one => array send that
         this.bobaForm = document.getElementById('new-boba-form')
         this.bobaForm.addEventListener('submit',this.createBoba.bind(this))
-        
-        // this.ingButton = document.getElementById('ing-button')
-        // this.ingButton.addEventListener('click', function(){
-        //     IngredientAdapter.getIngredients();
-        //   });
-        // this.bobaForm = document.getElementById('new-boba-form')
-        // this.bobaForm.addEventListener('submit', Boba.createBoba)
-    
+
+        // this.bobaForm.addEventListener('change',() => {
+        //     if (ing.checked){
+        //         ing.value.visibility = 'visible';
+        //     }
+        //     else {
+        //         ing.value.visibility = 'hidden';
+        //     }
+        // }
+        // )
       }
 
     createBoba(e){
         e.preventDefault()
         const name = this.bobaName.value
         const flavor = this.bobaFlavor.value
-        //"green"
-        
         const ingredient_ids = Array.from(e.target).filter(
             ing => ing.type === 'checkbox' && ing.checked).map(
             input => input.value)
-        
-        // console.log(ingredient_ids)
         //grab checked checkboxes. //value from the array
-        // [1,2,3,4]
-        //array of ids(only the one that's checked)
         this.adapter.createBoba(name,flavor,ingredient_ids).then(boba => {
             const newBoba = new Boba(boba)
             this.bobas.push(newBoba)
@@ -52,9 +46,13 @@ class Bobas {
         this.bobaName.value = ''
         this.bobaFlavor.value = ''
         Array.from(e.target).map(
-            ing => ing.type === 'checkbox' && ing.checked === false)
+            ing => {if(ing.type === 'checkbox')
+            ing.checked = false
+        })
         }
 
+        
+        
     fetchAndLoadBobas(){  
         this.adapter
         .getBobas()
@@ -81,17 +79,15 @@ class Bobas {
         })
     }
     render(){     
-            // this.bobasContainer.innerHTML = this.bobas.map(boba => this.bobasContainer.innerHTML.boba.renderLi()).join('')
             this.bobas.map(boba => {
-                console.log(boba.renderLi())
             this.bobasContainer.appendChild(boba.renderLi()) 
            })
         }
-
     renderIngredients(){
-            this.ingredientContainer.innerHTML = this.ingredients.map(ingredient => ingredient.renderCheckbox()).join('')
-            
+            this.ingredientContainer.innerHTML = this.ingredients.map(ingredient => ingredient.renderCheckbox()).join('')        
     }
+   
+
 }
 
 class Boba {
@@ -126,7 +122,6 @@ class Boba {
             test.remove()
        })
        }
-
 }
 
 class Ingredient {
@@ -136,9 +131,10 @@ class Ingredient {
     }
 
     renderCheckbox(){
-        return `<input type="checkbox" name=${this.name} value= ${this.id} >
+        return `<input type="checkbox" name=${this.name} value= ${this.id} id= "checkboxes" >
                 <label>${this.name}</label>` 
     }
+    
 }
 
 

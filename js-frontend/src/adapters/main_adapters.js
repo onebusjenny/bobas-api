@@ -21,12 +21,8 @@ class BobasAdapter {
             },
             body: JSON.stringify({boba})
         })
-        .then(res => res.json())
-        
+        .then(res => res.json())   
         }
-
-
-
     }
     
 // communicate with api
