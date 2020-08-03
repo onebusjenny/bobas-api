@@ -15,19 +15,9 @@ class Bobas {
         this.ingredientContainer = document.getElementById('ingredient-container')
         this.bobaName = document.getElementById('boba-name')
         this.bobaFlavor = document.getElementById('boba-flavor')
-        //grab the checked boxes > create array/ grab only the checked one => array send that
         this.bobaForm = document.getElementById('new-boba-form')
         this.bobaForm.addEventListener('submit',this.createBoba.bind(this))
-
-        // this.bobaForm.addEventListener('change',() => {
-        //     if (ing.checked){
-        //         ing.value.visibility = 'visible';
-        //     }
-        //     else {
-        //         ing.value.visibility = 'hidden';
-        //     }
-        // }
-        // )
+        //changing the context on what we're operating on
       }
 
     createBoba(e){
@@ -35,6 +25,7 @@ class Bobas {
         const name = this.bobaName.value
         const flavor = this.bobaFlavor.value
         const ingredient_ids = Array.from(e.target).filter(
+            
             ing => ing.type === 'checkbox' && ing.checked).map(
             input => input.value)
         //grab checked checkboxes. //value from the array
@@ -61,7 +52,6 @@ class Bobas {
                 const newBoba = new Boba(boba)
                 this.bobas.push(newBoba)
                 // iterate and then push indivisual object into []
-                // console.log(this.bobas)
             })
             this.render()
         })

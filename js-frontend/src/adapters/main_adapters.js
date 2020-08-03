@@ -36,7 +36,8 @@ class BobasAdapter {
         )
     }
 
-
+    //function declration, function expression: const , arroy function, 
+    //immediate invoke funtion expression, anonymous function
 
 
 
