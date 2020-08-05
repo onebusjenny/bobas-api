@@ -17,7 +17,6 @@ class Bobas {
         this.bobaFlavor = document.getElementById('boba-flavor')
         this.bobaForm = document.getElementById('new-boba-form')
         this.bobaForm.addEventListener('submit',this.createBoba.bind(this))
-        //changing the context on what we're operating on
       }
 
     createBoba(e){
@@ -28,7 +27,6 @@ class Bobas {
             
             ing => ing.type === 'checkbox' && ing.checked).map(
             input => input.value)
-        //grab checked checkboxes. //value from the array
         this.adapter.createBoba(name,flavor,ingredient_ids).then(boba => {
             const newBoba = new Boba(boba)
             this.bobas.push(newBoba)
@@ -51,7 +49,6 @@ class Bobas {
             bobas.forEach(boba => {
                 const newBoba = new Boba(boba)
                 this.bobas.push(newBoba)
-                // iterate and then push indivisual object into []
             })
             this.render()
         })
@@ -76,8 +73,6 @@ class Bobas {
     renderIngredients(){
             this.ingredientContainer.innerHTML = this.ingredients.map(ingredient => ingredient.renderCheckbox()).join('')        
     }
-   
-
 }
 
 class Boba {
@@ -92,7 +87,24 @@ class Boba {
         const li = document.createElement('li')
         li.id = this.id
         li.innerHTML= `Boba Name: ${this.name}<br>Tea Flavor: ${this.flavor}
-        <br>Ingredients: ${this.ingredients.map(ingredients => ingredients.name).join(', ')}`
+        <br>Ingredients: ${this.ingredients.map(ingredients => ingredients.name).join(', ')}
+        <button class="like-button" id="like-${this.id}" onClick="like()"  >0</button>
+      
+       
+        `
+       
+        // <p> <a id="likes">0</a></p>
+        // <button type="button" onClick="like()">Click me</button>
+        // <p>Clicks: <a id="clicks">0</a></p>
+        //increment like button, add number to each number for likes, start from 0
+
+        const likeButton = document.createElement('button')
+        likeButton.innerHTML = 'like'
+        likeButton.id = this.id
+        likeButton.addEventListener('click', this.like)
+        li.appendChild(likeButton)
+        
+
         const deleteBobaButton = document.createElement('button')
         deleteBobaButton.innerText = 'delete boba'
         deleteBobaButton.id =this.id
@@ -112,6 +124,23 @@ class Boba {
             test.remove()
        })
        }
+    like(){
+        var likes = 0
+        likes++
+        document.getElementById(`like-${this.id}`).innerHTML = likes;
+
+
+
+
+        // var likes = 0;
+        // likes++
+        // const test1 = document.getElementById(`like-${this.id}`).innerHTML = likes;
+        // console.log("test1",test1)
+      
+    };
+
+    
+
 }
 
 class Ingredient {

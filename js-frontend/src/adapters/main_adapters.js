@@ -35,39 +35,6 @@ class BobasAdapter {
         return fetch(this.baseUrl).then(res => res.json()
         )
     }
-
-    //function declration, function expression: const , arroy function, 
-    //immediate invoke funtion expression, anonymous function
-
-
-
-
-
-
-//   static getIngredients(){
-//     return fetch('http://localhost:3000/api/v1/ingredients')
-//     .then(res => res.json()
-//     .then(ingArray => {ingArray.forEach(ingredient)
-//         debugger
-
-//         var checkbox = document.createElement('input');
-//         checkbox.type = "checkbox"
-//         checkbox.name = "boba[ingredient-ids][]"
-//         checkbox.value = ingredient.id
-//         checkbox.id = "ingredient-id"
-
-//         var label = document.createElement('label')
-//         label.innerHTML = ingredient.name
-//         const new_boba_form = document.getElementById('new-boba-form')
-//         new_boba_form.append(label,checkbox)
-        
-
-
-//         //dynamicly check boxes, using the ingredient array date //iterate through array
-//         //place in the index.html()
-//     })
-//     )
-//         }   
   }
   
   

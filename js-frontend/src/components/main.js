@@ -40,7 +40,6 @@ class Bobas {
         this.bobasContainer = document.getElementById('bobas-container')
         this.bobaForm = document.getElementById('new-boba-form')
         this.bobaForm.addEventListener('submit',Boba.createBoba.bind(this))
-        // send back the check ids
       }
 
     fetchAndLoadBobas(){
@@ -50,8 +49,6 @@ class Bobas {
             bobas.forEach(boba => {
                 const newBoba = new Boba(boba)
                 this.bobas.push(newBoba)
-                // iterate and then push indivisual object into []
-                // console.log(this.bobas)
             })
             this.render()
         })
