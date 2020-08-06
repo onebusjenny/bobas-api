@@ -74,25 +74,23 @@ class Bobas {
             this.ingredientContainer.innerHTML = this.ingredients.map(ingredient => ingredient.renderCheckbox()).join('')        
     }
 }
-
 class Boba {
     constructor(bobaJSON){
         this.id = bobaJSON.id
         this.name = bobaJSON.name
         this.flavor = bobaJSON.flavor
         this.ingredients = bobaJSON.ingredients
+        
     }
 
     renderLi(){
         const li = document.createElement('li')
         li.id = this.id
         li.innerHTML= `Boba Name: ${this.name}<br>Tea Flavor: ${this.flavor}
-        <br>Ingredients: ${this.ingredients.map(ingredients => ingredients.name).join(', ')}
-        <button class="like-button" id="like-${this.id}" onClick="like()"  >0</button>
-      
-       
+        <br>Ingredients: ${this.ingredients.map(ingredients => ingredients.name).join(', ')}<br>
+        <span class="like-button" id="like-${this.id}"  onClick="like()" >0</span>
         `
-       
+
         // <p> <a id="likes">0</a></p>
         // <button type="button" onClick="like()">Click me</button>
         // <p>Clicks: <a id="clicks">0</a></p>
@@ -103,7 +101,6 @@ class Boba {
         likeButton.id = this.id
         likeButton.addEventListener('click', this.like)
         li.appendChild(likeButton)
-        
 
         const deleteBobaButton = document.createElement('button')
         deleteBobaButton.innerText = 'delete boba'
@@ -112,7 +109,12 @@ class Boba {
         li.appendChild(deleteBobaButton)
         return li
     }
-
+     
+    like(){
+        var likey = document.getElementById(`like-${this.id}`)
+        var a = parseInt(likey.innerHTML)
+        likey.innerHTML = ++a
+    };
     deleteBoba(ev) {
          return fetch('http://localhost:3000/api/v1/bobas' + '/' + ev.target.id, {
            method: 'DELETE'
@@ -120,24 +122,10 @@ class Boba {
          .then(response => response.json())
          .then(response => {
             const test = document.getElementById(`${response.id}`)
-            console.log("test", test)
             test.remove()
        })
        }
-    like(){
-        var likes = 0
-        likes++
-        document.getElementById(`like-${this.id}`).innerHTML = likes;
-
-
-
-
-        // var likes = 0;
-        // likes++
-        // const test1 = document.getElementById(`like-${this.id}`).innerHTML = likes;
-        // console.log("test1",test1)
-      
-    };
+    
 
     
 
